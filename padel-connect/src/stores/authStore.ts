@@ -82,14 +82,32 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   updateProfile: async (profileData) => {
     const { user } = get();
     if (!user) return { error: new Error('Not authenticated') };
-    const { error, data } = await supabase
+
+    const payload = { ...profileData, updated_at: new Date().toISOString() };
+
+    // Try update first (profile created by trigger on signup)
+    const { error: updateError, data: updateData } = await supabase
       .from('profiles')
-      .upsert({ id: user.id, ...profileData, updated_at: new Date().toISOString() })
+      .update(payload)
+      .eq('id', user.id)
       .select()
       .single();
-    if (!error && data) {
-      set({ profile: data as Profile });
+
+    if (!updateError && updateData) {
+      set({ profile: updateData as Profile });
+      return { error: null };
     }
-    return { error };
+
+    // Fallback: insert if profile row doesn't exist yet
+    const { error: insertError, data: insertData } = await supabase
+      .from('profiles')
+      .insert({ id: user.id, email: user.email, ...payload })
+      .select()
+      .single();
+
+    if (!insertError && insertData) {
+      set({ profile: insertData as Profile });
+    }
+    return { error: insertError };
   },
 }));

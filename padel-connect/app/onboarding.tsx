@@ -75,7 +75,7 @@ export default function OnboardingScreen() {
     setIsLoading(false);
 
     if (error) {
-      Alert.alert('Erreur', 'Impossible de sauvegarder ton profil');
+      Alert.alert('Erreur', error?.message || 'Impossible de sauvegarder ton profil');
     } else {
       await fetchProfile();
       router.replace('/(tabs)/home');
