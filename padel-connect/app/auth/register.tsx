@@ -15,6 +15,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Input } from '../../src/components/Input';
 import { Button } from '../../src/components/Button';
+import { Logo } from '../../src/components/Logo';
 import { useAuthStore } from '../../src/stores/authStore';
 import { colors, fontSize, fontWeight, spacing } from '../../src/lib/theme';
 
@@ -68,6 +69,7 @@ export default function RegisterScreen() {
           keyboardShouldPersistTaps="handled"
         >
           <View style={styles.header}>
+            <Logo size="md" style={{ marginBottom: spacing['2xl'] }} />
             <Text style={styles.title}>Creer un compte</Text>
             <Text style={styles.subtitle}>
               Rejoins la communaute Padel Connect

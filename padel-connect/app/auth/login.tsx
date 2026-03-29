@@ -15,6 +15,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Input } from '../../src/components/Input';
 import { Button } from '../../src/components/Button';
+import { Logo } from '../../src/components/Logo';
 import { useAuthStore } from '../../src/stores/authStore';
 import { colors, fontSize, fontWeight, spacing } from '../../src/lib/theme';
 
@@ -62,11 +63,7 @@ export default function LoginScreen() {
           keyboardShouldPersistTaps="handled"
         >
           <View style={styles.header}>
-            <Text style={styles.logo}>PADEL</Text>
-            <Text style={styles.logoAccent}>CONNECT</Text>
-            <Text style={styles.subtitle}>
-              Trouve ton match. Joue. Progresse.
-            </Text>
+            <Logo size="lg" showTagline />
           </View>
 
           <View style={styles.form}>

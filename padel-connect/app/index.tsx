@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useAuthStore } from '../src/stores/authStore';
-import { colors } from '../src/lib/theme';
+import { Logo } from '../src/components/Logo';
+import { colors, spacing } from '../src/lib/theme';
 
 export default function Index() {
   const router = useRouter();
@@ -22,7 +23,12 @@ export default function Index() {
 
   return (
     <View style={styles.container}>
-      <ActivityIndicator size="large" color={colors.green} />
+      <Logo size="lg" />
+      <ActivityIndicator
+        size="large"
+        color={colors.green}
+        style={{ marginTop: spacing['3xl'] }}
+      />
     </View>
   );
 }
