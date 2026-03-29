@@ -25,6 +25,7 @@ export interface Club {
   name: string;
   city: string;
   address: string;
+  phone: string | null;
   description: string | null;
   logo_url: string | null;
   courts_count: number;

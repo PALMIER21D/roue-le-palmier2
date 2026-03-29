@@ -47,6 +47,7 @@ CREATE TABLE clubs (
   name TEXT NOT NULL,
   city TEXT NOT NULL,
   address TEXT NOT NULL DEFAULT '',
+  phone TEXT,
   description TEXT,
   logo_url TEXT,
   courts_count INTEGER NOT NULL DEFAULT 1,
@@ -171,15 +172,18 @@ CREATE INDEX idx_profiles_city ON profiles(city);
 -- =============================================
 -- SEED DATA - Sample clubs
 -- =============================================
-INSERT INTO clubs (name, city, address, description, courts_count) VALUES
-  ('Padel Club Paris', 'Paris', '12 Rue du Sport, 75015 Paris', 'Le premier club de padel parisien.', 6),
-  ('Lyon Padel Arena', 'Lyon', '45 Avenue Jean Jaures, 69007 Lyon', 'Centre premium de padel a Lyon.', 4),
-  ('Marseille Padel Center', 'Marseille', '8 Boulevard du Littoral, 13008 Marseille', 'Padel face a la mer.', 5),
-  ('Toulouse Padel Club', 'Toulouse', '23 Rue de la Republique, 31000 Toulouse', 'Le padel au coeur de Toulouse.', 3),
-  ('Bordeaux Padel', 'Bordeaux', '67 Cours de la Marne, 33000 Bordeaux', 'Padel et convivialite a Bordeaux.', 4),
-  ('Nice Padel', 'Nice', '15 Promenade des Anglais, 06000 Nice', 'Padel sur la Cote d''Azur.', 3),
-  ('Lille Padel Club', 'Lille', '34 Rue Faidherbe, 59000 Lille', 'Le padel dans le Nord.', 3),
-  ('Nantes Padel Arena', 'Nantes', '56 Quai de la Fosse, 44000 Nantes', 'Padel a Nantes.', 4);
+INSERT INTO clubs (name, city, address, phone, description, courts_count) VALUES
+  ('Padel Club Paris', 'Paris', '12 Rue du Sport, 75015 Paris', NULL, 'Le premier club de padel parisien.', 6),
+  ('Lyon Padel Arena', 'Lyon', '45 Avenue Jean Jaures, 69007 Lyon', NULL, 'Centre premium de padel a Lyon.', 4),
+  ('Marseille Padel Center', 'Marseille', '8 Boulevard du Littoral, 13008 Marseille', NULL, 'Padel face a la mer.', 5),
+  ('Toulouse Padel Club', 'Toulouse', '23 Rue de la Republique, 31000 Toulouse', NULL, 'Le padel au coeur de Toulouse.', 3),
+  ('Bordeaux Padel', 'Bordeaux', '67 Cours de la Marne, 33000 Bordeaux', NULL, 'Padel et convivialite a Bordeaux.', 4),
+  ('Nice Padel', 'Nice', '15 Promenade des Anglais, 06000 Nice', NULL, 'Padel sur la Cote d''Azur.', 3),
+  ('Lille Padel Club', 'Lille', '34 Rue Faidherbe, 59000 Lille', NULL, 'Le padel dans le Nord.', 3),
+  ('Nantes Padel Arena', 'Nantes', '56 Quai de la Fosse, 44000 Nantes', NULL, 'Padel a Nantes.', 4),
+  ('Dijon Padel', 'Dijon', 'Allee Jacques Laffite, 21490 Norges-la-Ville', '03 80 35 76 63', 'Club de padel a Norges-la-Ville pres de Dijon.', 6),
+  ('UrbanPadel Dijon', 'Dijon', '28 Rue de Cracovie, 21850 Saint-Apollinaire', '07 68 65 56 82', 'Padel urbain a Saint-Apollinaire.', 4),
+  ('Padel Park TCD', 'Dijon', '1 Bd Marechal de Lattre de Tassigny, 21000 Dijon', '09 73 88 43 96', 'Padel au coeur de Dijon.', 2);
 
 -- =============================================
 -- REALTIME
